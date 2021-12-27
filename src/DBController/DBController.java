@@ -6,6 +6,7 @@
 package DBController;
 
 
+import Class.SanPham;
 import DBConnection.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -53,6 +54,50 @@ public class DBController {
                 
                 DoiTac dt = new DoiTac(id,ten);
                 list.add(dt);
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public static ArrayList<SanPham> getSanPham1() {
+        ArrayList<SanPham> list = new ArrayList<>();
+        Connection conn = null;
+        try{
+            conn = DBConnection.getConnection();
+            Statement hd = conn.createStatement();
+            ResultSet rs = hd.executeQuery("select * from SanPham");
+            while(rs.next()){
+                String madh = rs.getString("MaSP");
+                String tensp = rs.getString("TenSP");
+                int soluongtrenquay = rs.getInt("SoLuongTrenQuay");
+                 
+                SanPham dh;
+                dh = new SanPham(madh, tensp, soluongtrenquay);
+                list.add(dh);
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public static ArrayList<SanPham> getSanPham2() {
+        ArrayList<SanPham> list = new ArrayList<>();
+        Connection conn = null;
+        try{
+            conn = DBConnection.getConnection();
+            Statement hd = conn.createStatement();
+            ResultSet rs = hd.executeQuery("select * from SanPham");
+            while(rs.next()){
+                String madh = rs.getString("MaSP");
+                String tensp = rs.getString("TenSP");
+                int soluongton = rs.getInt("SoLuongTon");
+                 
+                SanPham dh;
+                dh = new SanPham(madh, tensp, soluongton);
+                list.add(dh);
             }
         }catch (SQLException ex) {
             Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
