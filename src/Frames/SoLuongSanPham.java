@@ -64,7 +64,7 @@ public class SoLuongSanPham extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Thống kê sản phảm");
+        jLabel1.setText("Thống kê sản phẩm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
