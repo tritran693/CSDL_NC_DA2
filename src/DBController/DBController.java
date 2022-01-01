@@ -6,9 +6,11 @@
 package DBController;
 
 
+import Class.DoanhThuThang;
 import Class.DonHang;
 import Class.NhanVien;
 import Class.SanPham;
+import Class.SoLuongThang;
 import DBConnection.DBConnection;
 import java.sql.Connection;
 import java.sql.Date;
@@ -43,26 +45,6 @@ public class DBController {
             return false;
         }
     }
-    
-    /*public static ArrayList<DoiTac> getTenDoiTac(){
-        ArrayList<DoiTac> list = new ArrayList<>();
-        Connection conn = null;
-        try{
-            conn = DBConnection.getConnection();
-            Statement hd = conn.createStatement();
-            ResultSet rs = hd.executeQuery("select MaDT,TenDoiTac from DoiTac");
-            while(rs.next()){
-                String id = rs.getString("MaDT");
-                String ten = rs.getString("TenDoiTac");
-                
-                DoiTac dt = new DoiTac(id,ten);
-                list.add(dt);
-            }
-        }catch (SQLException ex) {
-            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }*/
 
     public static ArrayList<SanPham> getSanPham1() {
         ArrayList<SanPham> list = new ArrayList<>();
@@ -153,5 +135,49 @@ public class DBController {
             return null;
         }
         return list;
+    }
+
+    public static ArrayList<SoLuongThang> getSoLuongThang(String year) {
+        ArrayList<SoLuongThang> list = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "exec SoLuongThang ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, year);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String thang = rs.getString("Tháng");
+                int tong = rs.getInt("Số lượng hàng hóa");
+                SoLuongThang model = new SoLuongThang(thang, tong);
+                list.add(model);
+            }          
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<DoanhThuThang> getDoanhThuThang(String year) {
+        ArrayList<DoanhThuThang> list = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "exec DoanhThuThang ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, year);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String thang = rs.getString("Tháng");
+                int tong = rs.getInt("Tổng tiền");
+                DoanhThuThang model = new DoanhThuThang(thang, tong);
+                list.add(model);
+            }          
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
