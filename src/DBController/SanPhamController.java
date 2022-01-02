@@ -96,4 +96,47 @@ public class SanPhamController {
             return false;
         }
     }
+    
+    public static ArrayList<SanPham1> searchSanPham(String opt, String value){
+        ArrayList<SanPham1> list = new ArrayList<>();
+        Connection conn = null;
+        try{
+            conn = DBConnection.getConnection();
+            Statement sp = conn.createStatement();
+            
+            String query = "";
+            
+            if(opt == "Mã SP"){
+                query = "select * from SanPham where MaSP = ?";
+            }else if(opt == "Tên SP"){
+                query = "select * from SanPham where TenSP like ?";
+                value = "%" + value + "%";
+            }else if(opt == "Nhà SX"){
+                query = "select * from SanPham where NhaSX = ?";
+            }
+            
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, value);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                String maSP = rs.getString("MaSP");
+                String tenSP = rs.getString("TenSP");
+                String nhaSX = rs.getString("NhaSX");
+                String moTa = rs.getString("MoTa");
+                String ngaySX = rs.getString("NgaySX");
+                String ngayHH = rs.getString("NgayHetHan");
+                int slTon = rs.getInt("SoLuongTon");
+                int slTrenQuay = rs.getInt("SoLuongTrenQuay");
+                int giaBan = rs.getInt("GiaBan");
+
+                SanPham1 sp1;
+                sp1 = new SanPham1(maSP, tenSP, nhaSX, moTa, ngaySX, ngayHH, slTon, slTrenQuay, giaBan);
+                list.add(sp1);
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(DBController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }

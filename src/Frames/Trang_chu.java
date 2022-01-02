@@ -191,6 +191,9 @@ public class Trang_chu extends javax.swing.JFrame {
         pMaSP = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
+        pSearch = new javax.swing.JTextField();
+        pSearchOpt = new javax.swing.JComboBox<>();
+        bSearch = new javax.swing.JButton();
         pn5 = new javax.swing.JPanel();
         jPanel28 = new javax.swing.JPanel();
         Quanly = new javax.swing.JTabbedPane();
@@ -1054,7 +1057,7 @@ public class Trang_chu extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(find1))
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(646, Short.MAX_VALUE))
+                .addContainerGap(635, Short.MAX_VALUE))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1082,8 +1085,7 @@ public class Trang_chu extends javax.swing.JFrame {
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
@@ -1254,6 +1256,15 @@ public class Trang_chu extends javax.swing.JFrame {
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText(".com");
 
+        pSearchOpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã SP", "Tên SP", "Nhà SX" }));
+
+        bSearch.setText("Search");
+        bSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
         jPanel31Layout.setHorizontalGroup(
@@ -1275,7 +1286,7 @@ public class Trang_chu extends javax.swing.JFrame {
                                     .addComponent(pNSX, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pTenSP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel31Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(149, Short.MAX_VALUE)
                         .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel31Layout.createSequentialGroup()
@@ -1283,23 +1294,15 @@ public class Trang_chu extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(pNgaySX, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel29))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
-                        .addComponent(bReset, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(bCapNhat)
-                        .addGap(393, 393, 393))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
-                        .addComponent(bThemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(275, 275, 275))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
                         .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel31Layout.createSequentialGroup()
                                 .addComponent(jLabel37)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel38)
-                                .addGap(70, 70, 70)
+                                .addGap(81, 81, 81)
                                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1314,7 +1317,26 @@ public class Trang_chu extends javax.swing.JFrame {
                             .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(pSLTon, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                 .addComponent(pSLTrenQuay))
-                            .addComponent(pNgayHH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pNgayHH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pSearch)
+                            .addGroup(jPanel31Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(bReset, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(bCapNhat)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel31Layout.createSequentialGroup()
+                                .addComponent(pSearchOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bSearch))
+                            .addGroup(jPanel31Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(bThemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(241, 241, 241)))
                 .addGap(357, 357, 357))
         );
         jPanel31Layout.setVerticalGroup(
@@ -1340,35 +1362,35 @@ public class Trang_chu extends javax.swing.JFrame {
                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pSLTrenQuay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel31Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(pSLTrenQuay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel31Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel37)
-                                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(pNSX, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel38)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel37)
+                                .addComponent(jLabel38))
+                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(pNSX, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(8, 8, 8)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(pMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(pGia, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pNgaySX, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(pNgaySX, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pSearchOpt, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1392,7 +1414,7 @@ public class Trang_chu extends javax.swing.JFrame {
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane17.addTab("Sản phẩm", jPanel27);
@@ -2230,6 +2252,35 @@ public class Trang_chu extends javax.swing.JFrame {
         jLabel15.setText(Integer.toString(ngaycomat));
         jLabel16.setText(Integer.toString(ngayvang));
     }//GEN-LAST:event_jFind2ActionPerformed
+
+    private void bSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSearchActionPerformed
+        // TODO add your handling code here:
+        if(!pSearch.getText().isEmpty()){
+            String value = pSearch.getText();
+            String opt = pSearchOpt.getSelectedItem().toString();
+            
+            DefaultTableModel model = new DefaultTableModel();
+            model.addColumn("Mã SP");
+            model.addColumn("Tên SP");
+            model.addColumn("Nha SX");
+            model.addColumn("Mô tả");
+            model.addColumn("Ngày SX");
+            model.addColumn("Ngày HH");
+            model.addColumn("SL tồn");
+            model.addColumn("SL trên quầy");
+            model.addColumn("Giá bán");
+            
+            ArrayList<SanPham1> list = null;
+            list = SanPhamController.searchSanPham(opt, value);
+            for(SanPham1 dt:list){
+                model.addRow(dt.toArray());
+            }
+            tDSSanPham.setModel(model);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Bạn cần nhập đủ thông tin");
+        }
+    }//GEN-LAST:event_bSearchActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2278,6 +2329,7 @@ public class Trang_chu extends javax.swing.JFrame {
     private javax.swing.JPanel a1;
     private javax.swing.JButton bCapNhat;
     private javax.swing.JButton bReset;
+    private javax.swing.JButton bSearch;
     private javax.swing.JButton bThemSP;
     private javax.swing.JButton btTimKiemSP;
     private javax.swing.JButton btXemLSMH;
@@ -2366,6 +2418,8 @@ public class Trang_chu extends javax.swing.JFrame {
     private javax.swing.JTextField pNgaySX;
     private javax.swing.JTextField pSLTon;
     private javax.swing.JTextField pSLTrenQuay;
+    private javax.swing.JTextField pSearch;
+    private javax.swing.JComboBox<String> pSearchOpt;
     private javax.swing.JTextField pTenSP;
     private javax.swing.JPanel pn1;
     private javax.swing.JPanel pn2;
