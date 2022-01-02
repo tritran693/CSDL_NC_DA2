@@ -14,7 +14,23 @@ import java.util.Vector;
 public class NhanVien {
     private String MaNV;
     private String TenNV;
+    private String ngay;
     private String TrangThai;
+
+    public NhanVien(String MaNV, String TenNV, String ngay, String TrangThai) {
+        this.MaNV = MaNV;
+        this.TenNV = TenNV;
+        this.ngay = ngay;
+        this.TrangThai = TrangThai;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
 
     public String getMaNV() {
         return MaNV;
@@ -40,14 +56,10 @@ public class NhanVien {
         this.TrangThai = TrangThai;
     }
 
-    public NhanVien(String MaNV, String TenNV, String TrangThai) {
-        this.MaNV = MaNV;
-        this.TenNV = TenNV;
-        this.TrangThai = TrangThai;
-    }
+
 
     public Object[] toArray(){
-        return new Object[]{MaNV, TenNV, TrangThai};
+        return new Object[]{ngay, TrangThai};
     }
     
 }

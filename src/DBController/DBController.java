@@ -119,15 +119,16 @@ public class DBController {
         Connection conn = null;
         try{
             conn = DBConnection.getConnection();
-            PreparedStatement ps=conn.prepareStatement("select NV.MaNV, TenNV, TrangThai from NhanVien NV, DiemDanhNV DDNV where NV.MaNV=DDNV.MaNV and NV.MaNV=?");
+            PreparedStatement ps=conn.prepareStatement("select NV.MaNV, TenNV, Format(DDNV.Ngay, 'dd-MM-yyyy') as ngay , TrangThai from NhanVien NV, DiemDanhNV DDNV where NV.MaNV=DDNV.MaNV and NV.MaNV=?");
             ps.setString(1, MANV);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 String manv = rs.getString("MaNV");
                 String tennv = rs.getString("TenNV");
+                String ngay = rs.getString("ngay");
                 String trangthai = rs.getString("TrangThai");
                 NhanVien nv;
-                nv = new NhanVien(manv, tennv, trangthai);
+                nv = new NhanVien(manv, tennv, ngay, trangthai);
                 list.add(nv);
             }
         }catch (SQLException ex) {

@@ -6,6 +6,7 @@
 package Class;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -57,6 +58,8 @@ public class DonHang {
     }
     
     public Object[] toArray(){
-        return new Object[]{MaNV, TenNV, TongTien, NgayDat};
+        DecimalFormat format = new DecimalFormat("###,###,###");
+        String tongTienString =format.format(TongTien);
+        return new Object[]{MaNV, TenNV, tongTienString, NgayDat};
     }
 }
