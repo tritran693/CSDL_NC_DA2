@@ -275,8 +275,9 @@ public class KhachHang extends javax.swing.JFrame {
             tbResultLSMH.setModel(tblModelLSMH);
         } catch (SQLException ex) {
             Logger.getLogger(JFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btXemLSMHActionPerformed
-    }
+    
     /**
      * @param args the command line arguments
      */
