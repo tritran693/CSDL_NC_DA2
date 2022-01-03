@@ -1391,7 +1391,7 @@ public class Trang_chu extends javax.swing.JFrame {
                     .addComponent(bSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pSearchOpt, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bThemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2010,25 +2010,26 @@ public class Trang_chu extends javax.swing.JFrame {
             if(dateSX.isEmpty() || dateSX.equals("dd-mm-yyyy")){
                 ngaySX=null;
             }else{
-                dateArray = dateSX.split("/");
-                ngaySX = dateArray[1]+"/"+dateArray[0]+"/"+dateArray[2];
+                dateArray = dateSX.split("-");
+                ngaySX = dateArray[1]+"-"+dateArray[0]+"-"+dateArray[2];
             }
 
-            String dateHH = pNgaySX.getText();
+            String dateHH = pNgayHH.getText();
             if(dateHH.isEmpty() || dateHH.equals("dd-mm-yyyy")){
                 ngayHH=null;
             }else{
-                dateArray = dateHH.split("/");
-                ngayHH = dateArray[1]+"/"+dateArray[0]+"/"+dateArray[2];
+                dateArray = dateHH.split("-");
+                ngayHH = dateArray[1]+"-"+dateArray[0]+"-"+dateArray[2];
             }
 
             int slTon = Integer.parseInt(pSLTon.getText());
             int slTrenQuay = Integer.parseInt(pSLTrenQuay.getText());
             int giaBan = Integer.parseInt(pGia.getText());
 
-            if(!SanPhamController.insert(maSP, tenSP, nhaSX, moTa, ngaySX, ngayHH, slTon, slTrenQuay, giaBan)){
-                JOptionPane.showMessageDialog(this, "Thêm thất bại");
-            }else JOptionPane.showMessageDialog(this, "Thêm thành công");
+            if(SanPhamController.insert(maSP, tenSP, nhaSX, moTa, ngaySX, ngayHH, slTon, slTrenQuay, giaBan)){
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+                showDSSanPham();
+            }else JOptionPane.showMessageDialog(this, "Thêm thất bại");
         }else{
             JOptionPane.showMessageDialog(this, "Bạn cần nhập đủ thông tin");
         }
@@ -2061,7 +2062,7 @@ public class Trang_chu extends javax.swing.JFrame {
                 ngaySX = dateArray[1]+"-"+dateArray[0]+"-"+dateArray[2];
             }
 
-            String dateHH = pNgaySX.getText();
+            String dateHH = pNgayHH.getText();
             if(dateHH.isEmpty() || dateHH.equals("dd-mm-yyyy")){
                 ngayHH=null;
             }else{
